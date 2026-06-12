@@ -8,7 +8,6 @@ version = 8.0
 
 # در این خط، کتابخانه‌های مورد نیاز کدهای شما را دقیقاً وارد کردیم
 requirements = python3,kivy,aiohttp,aiohttp_socks,attrs,multidict,yarl,async_timeout,idna
-
 orientation = portrait
 fullscreen = 0
 android.archs = armeabi-v7a, arm64-v8a
