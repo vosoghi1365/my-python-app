@@ -12,7 +12,6 @@ from kivy.utils import get_color_from_hex
 from aiohttp import ClientSession, ClientTimeout
 from aiohttp_socks import ProxyConnector
 
-
 class ScannerDashboard(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(orientation='vertical', padding=15, spacing=10, **kwargs)
