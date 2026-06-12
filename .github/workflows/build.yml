@@ -31,15 +31,20 @@ jobs:
         sudo apt-get install -y build-essential libffi-dev libssl-dev tcl-dev tk-dev \
         zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev \
         libsqlite3-dev libreadline-dev uuid-dev fontconfig libfreetype6-dev \
-        openjdk-17-jdk-headless autoconf libtool pkg-config
+        autoconf libtool pkg-config
         pip install --upgrade pip setuptools wheel
         pip install Cython==0.29.36 buildozer
 
-    - name: Accept Android SDK Licenses
+    - name: Setup Android SDK and Build-Tools
+      uses: android-actions/setup-android@v3
+      with:
+        api-level: 33
+        build-tools: 33.0.0
+
+    - name: Link Android SDK to Buildozer
       run: |
-        mkdir -p ~/.android
-        touch ~/.android/repositories.cfg
-        yes | buildozer android clean || true
+        mkdir -p ~/.buildozer/android/platform/
+        ln -s $ANDROID_HOME ~/.buildozer/android/platform/android-sdk
 
     - name: Build with Buildozer
       run: |
